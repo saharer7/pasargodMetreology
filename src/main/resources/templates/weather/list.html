@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{/css/style1.css}"/>
+
+</head>
+<body>
+    <table>
+        <thead>
+        <tr>
+            <th scope="col">Index</th>
+            <th scope="col">location</th>
+            <th scope="col">registerDate</th>
+            <th scope="col">temperature</th>
+            <th scope="col">humidity</th>
+            <th scope="col">conditionIcon</th>
+            <th scope="col">Show</th>
+            <th scope="col">Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="weather: ${weatherList}">
+            <td th:text="${weatherStat.index +1}"></td>
+            <td th:text="${weather.location.city}"></td>
+            <td th:text="${weather.registerDate}"></td>
+            <td th:text="${weather.temp_c}"></td>
+            <td th:text="${weather.humidity}"></td>
+            <td>
+                <img th:src="${weather.icon}"/>
+            </td>
+            <td><a  th:href="@{'/weather/show/'+${weather.id}}">Show</a></td>
+            <td><a  th:href="@{'/weather/delete/'+${weather.id}}">Delete</a></td>
+        </tr>
+
+        </tbody>
+
+    </table>
+
+    <div th:if = "${totalPages > 1}" style="margin-left:50%; color:#adb5bd; font-size: larger;">
+        <div >
+            <div>
+                Total Rows: [[${totalItems}]]
+            </div>
+            <div>
+
+                <span th:each="i: ${#numbers.sequence(1, totalPages)}">
+                    <a th:if="${currentPage != i}" th:href="@{'/weather/list/' + ${i}}">[[${i}]]</a>
+                    <span th:unless="${currentPage != i}">[[${i}]]</span>  &nbsp; &nbsp;
+                </span>
+                <a th:if="${currentPage < totalPages}" th:href="@{'/weather/list/' + ${currentPage + 1}}">Next</a>
+                <span th:unless="${currentPage < totalPages}">Next</span>
+                <a th:if="${currentPage < totalPages}" th:href="@{'/weather/list/' + ${totalPages}}">Last</a>
+                <span th:unless="${currentPage < totalPages}">Last</span>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+
+
+
+
+
+
