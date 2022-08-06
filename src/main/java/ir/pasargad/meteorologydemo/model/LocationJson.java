@@ -1,19 +1,26 @@
 package ir.pasargad.meteorologydemo.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
-import org.springframework.format.annotation.DateTimeFormat;
+import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.io.Serializable;
+
 
 @Data
-public class LocationJson {
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+public class LocationJson implements Serializable {
+
+    private static final long serialVersionUID = -4398254011306251744L;
 
     private String name;
     private String region;
     private String country;
-    private double lat;
-    private double lon;
+    private float lat;
+    private float lon;
     private String tz_id;
     private String localtime_epoch;
     private String localtime;

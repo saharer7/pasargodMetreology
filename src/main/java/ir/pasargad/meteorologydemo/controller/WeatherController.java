@@ -17,7 +17,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -37,7 +36,7 @@ public class WeatherController {
 
 
     @GetMapping(value = "/test")
-    public String test(){
+    public String test() {
         return "index";
     }
 
@@ -57,24 +56,24 @@ public class WeatherController {
     }
 
     @GetMapping(value = "/show/{id}")
-    public String showSingle(Model model,@PathVariable(name = "id")Long id){
+    public String showSingle(Model model, @PathVariable(name = "id") Long id) {
         Weather weather = weatherService.findByIdWeather(id);
-        String time=weather.getRegisterDate().getHour()+":"+weather.getRegisterDate().getMinute();
-        model.addAttribute("time",time);
-        model.addAttribute("weather",weather);
+        String time = weather.getRegisterDate().getHour() + ":" + weather.getRegisterDate().getMinute();
+        model.addAttribute("time", time);
+        model.addAttribute("weather", weather);
         return "weather/show";
     }
 
     @GetMapping(value = "/delete/{id}")
-    public String delete(@PathVariable(name = "id")Long id){
+    public String delete(@PathVariable(name = "id") Long id) {
         weatherService.delete(id);
         return "redirect:/weather/list/1";
     }
 
     @GetMapping(value = "location/{location}/{pageNo}")
-    public String findByLocation(Model model,@PathVariable(name = "location")String location,@PathVariable(name = "pageNo") int pageNo){
+    public String findByLocation(Model model, @PathVariable(name = "location") long location, @PathVariable(name = "pageNo") int pageNo) {
         int size = 10;
-        Page<Weather> page =weatherService.findByLocation(location,pageNo, size);
+        Page<Weather> page = weatherService.findByLocation(location, pageNo, size);
         List<Weather> weatherList = page.getContent();
         return null;
     }

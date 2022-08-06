@@ -1,0 +1,28 @@
+{
+  "location":{
+        "name":"Tehran",
+        "region":"Tehran",
+        "country":"Iran",
+        "lat":35.73,"lon":51.33,
+        "tz_id":"Asia/Tehran",
+        "localtime_epoch":1659778382,
+        "localtime":"2022-08-06 14:03"
+  },
+  "current":{
+        "last_updated":"2022-08-06 14:00",
+        "temp_c":34.0,
+        "is_day":1,
+        "condition":{
+              "text":"Partly cloudy",
+              "icon":"//cdn.weatherapi.com/weather/64x64/day/116.png","code":1003
+        },
+        "wind_kph":19.1,"wind_degree":160,
+        "wind_dir":"SSE",
+        "pressure_mb":1011.0,
+        "humidity":14,
+        "cloud":25,
+        "feelslike_c":32.0,
+        "uv":9.0,
+        "gust_kph":16.2
+  }
+}
